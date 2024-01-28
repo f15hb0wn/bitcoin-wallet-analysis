@@ -1,0 +1,6 @@
+bitcoinrpc
+requests
+pandas
+matplotlib
+plotly
+pyyaml
