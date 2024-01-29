@@ -1,11 +1,9 @@
 # How to access Bitcoin Core RPC Server
-rpc_user: ""
-rpc_password: ""
+rpc_user: "Fish"
+rpc_password: "hello"
 rpc_host: "localhost"
-# How to access Bitcoinwhoswho.com API
-api_key: ""
 # Local path to store the output files
-output_path: ""
+output_path: "/mnt/c/Users/f15hb/Desktop/"
 # Bitcoin Wallet Address to analyze
-address_to_search: ""
+address_to_search: "1Abx3eY5pHFE1aC4AJLdU91qhHS5rzqP4E"
 

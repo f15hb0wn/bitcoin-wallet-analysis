@@ -1,0 +1,5 @@
+rpcuser=Fish
+rpcpassword=badpassword
+rpcbind=192.168.1.99
+server=1
+rpcallowip=192.168.1.0/24
