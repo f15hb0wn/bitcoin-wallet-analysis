@@ -10,5 +10,5 @@ Python project to analyze transactions of a Bitcoin wallet. Code connects to Bit
 # Operation
 - After updating `settings.yaml`, run `python3 analyze.py`. This will search all transactions in the Bitcoin ledger connected to the Bitcoin wallet set as `address_to_search`.
 - Results will be saved as a PDF in the `output_path`.
-- It will take a *VERY long time* to transverse the entire BTC ledger on most systems
+- It will take a *VERY long time* to transverse the entire BTC ledger on most systems. My local system was only able to process 60-80 blocks per second.
 
