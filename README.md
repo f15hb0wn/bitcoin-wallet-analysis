@@ -3,7 +3,7 @@ Python project to analyze transactions of a Bitcoin wallet. Code connects to Bit
 
 # Requirements
 1) Access to a Bitcoin Core RPC server. It can be downloaded locally at https://bitcoin.org/en/download. Downloading the ledger will take 7-10GB of local disk space if pruning is enabled. Otherwise, it can be over 300GB.
-2) Enable RPC server on Botcoin Core RPC server. `bitcoin.conf.example` example configuration is included.
+2) Enable RPC server on Bitcoin Core RPC server. `bitcoin.conf.example` example configuration is included.
 3) Copy `settings.yaml.example` to `settings.yaml` and set variables
 4) Install requirements.txt (`pip install -r requirements.txt`)
 
