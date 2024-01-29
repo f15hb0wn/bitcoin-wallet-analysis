@@ -5,6 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
 import plotly.graph_objects as go
+import datetime
 
 # Load settings from the settings.yaml file
 import yaml
@@ -44,7 +45,8 @@ print(f"Connected to the RPC server at {rpc_host}")
 addresses = [address_to_search]
 
 # Prepare a DataFrame to store the results
-df = pd.DataFrame(columns=['Transaction ID', 'Type', 'Amount (BTC)', 'Address', 'Balance (BTC)'])
+df = pd.DataFrame(columns=['Transaction ID', 'Type', 'Amount (BTC)', 'Address', 'Balance (BTC)', 'Time'])
+
 balance = 0
 
 print("Analyzing the blockchain...")
@@ -71,13 +73,27 @@ for block_number in range(block_count + 1):
         for vin in tx['vin']:
             if 'addr' in vin and vin['addr'] == address_to_search:
                 balance -= vin['value']
-                df = df.append({'Transaction ID': txid, 'Type': 'Withdrawal', 'Amount (BTC)': vin['value'], 'Address': vin['addr'], 'Balance (BTC)': balance}, ignore_index=True)
+                df = df.append({
+                    'Transaction ID': txid,
+                    'Type': 'Withdrawal',
+                    'Amount (BTC)': vin['value'],
+                    'Address': vin['addr'],
+                    'Balance (BTC)': balance,
+                    'Time': datetime.fromtimestamp(tx['time']).strftime('%Y-%m-%d %H:%M:%S')  # Convert the Unix timestamp to a human-readable format
+                }, ignore_index=True)
                 # Add the address to the list of addresses connected to the address to search
                 addresses.append(vin['addr'])
         for vout in tx['vout']:
             if 'addresses' in vout['scriptPubKey'] and address_to_search in vout['scriptPubKey']['addresses']:
                 balance += vout['value']
-                df = df.append({'Transaction ID': txid, 'Type': 'Deposit', 'Amount (BTC)': vout['value'], 'Address': vout['scriptPubKey']['addresses'][0], 'Balance (BTC)': balance}, ignore_index=True)
+                df = df.append({
+                    'Transaction ID': txid,
+                    'Type': 'Deposit',
+                    'Amount (BTC)': vout['value'],
+                    'Address': vout['scriptPubKey']['addresses'][0],
+                    'Balance (BTC)': balance,
+                    'Time': datetime.fromtimestamp(tx['time']).strftime('%Y-%m-%d %H:%M:%S')  # Convert the Unix timestamp to a human-readable format
+                }, ignore_index=True)
                 # Add the address to the list of addresses connected to the address to search
                 addresses.append(vout['scriptPubKey']['addresses'][0])
 # Close the progress bar
