@@ -139,3 +139,5 @@ with PdfPages(f'{output_path}/{address_to_search}.pdf') as pdf:
         )
     )])
     pdf.savefig(fig, bbox_inches='tight')
+
+print(f"Done! The results have been saved to {output_path}/{address_to_search}.pdf")
