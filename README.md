@@ -1,5 +1,5 @@
 # bitcoin-wallet-analysis
-Python project to analyze transactions and reputation of a Bitcoin wallet. 
+Python project to analyze transactions of a Bitcoin wallet. Code connects to Bitcoin Core RPC server and checks for all transactions into and out of the wallet. Data is saved in a PDF with a diagram and tranasaction table provided.
 
 # Requirements
 1) Access to a Bitcoin Core RPC server. It can be downloaded locally at https://bitcoin.org/en/download. Downloading the ledger will take 7-10GB of local disk space if pruning is enabled. Otherwise, it can be over 300GB.
